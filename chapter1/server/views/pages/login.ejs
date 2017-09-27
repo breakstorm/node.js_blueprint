@@ -7,13 +7,13 @@
 <body>
 	<% include ../partials/header %>
 	<div class="container">
-		<% if (message.length > 0)  %>
+		<% if (message.length > 0) { %>
 			<div class="alert alert-warning alert-dismissible fade in" role="alert">
 				<button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"> &times;</span></button>
 				
 				<strong>Ohps!</strong> <%= message %>
 			</div>
-		<%  %>
+		<% } %>
 
 		<form class="form-signin" action="/login" method="post">
 			<h2 class="form-signin-heading">Welcome sign in</h2>

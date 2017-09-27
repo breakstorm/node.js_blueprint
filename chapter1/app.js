@@ -9,6 +9,8 @@ var sassMiddleware = require('node-sass-middleware');
 var index = require('./server/routes/index');
 var users = require('./server/routes/users');
 
+var comments = require('./server/controllers/comments');
+
 // middleware
 var mongoose = require('mongoose');
 var session = require('express-session');
@@ -61,6 +63,9 @@ app.use(passport.session());
 app.use(flash());
 app.use('/', index);
 app.use('/users', users);
+
+app.get('/comments', comments.hasAuthorization, comments.list);
+app.post('/comments', comments.hasAuthorization, comments.create);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
