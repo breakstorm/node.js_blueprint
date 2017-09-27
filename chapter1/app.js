@@ -9,6 +9,13 @@ var sassMiddleware = require('node-sass-middleware');
 var index = require('./server/routes/index');
 var users = require('./server/routes/users');
 
+// middleware
+var mongoose = require('mongoose');
+var session = require('express-session');
+var MongoSstore = require('connect-mongo')(session);
+var passport = require('passport');
+var flash = require('connect-flash');
+
 var app = express();
 
 // view engine setup
