@@ -12,7 +12,7 @@ var users = require('./server/routes/users');
 // middleware
 var mongoose = require('mongoose');
 var session = require('express-session');
-var MongoSstore = require('connect-mongo')(session);
+var MongoStore = require('connect-mongo')(session);
 var passport = require('passport');
 var flash = require('connect-flash');
 
@@ -21,6 +21,16 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'server/views/pages'));
 app.set('view engine', 'ejs');
+
+// database sestup
+var config = require('./server/config/config.js');
+mongoose.connect(config.url);
+mongoose.connection.on('error', function(){
+  console.error('MongoDB Connection Error. Make sure MongoDB is running');
+});
+
+// passport setup
+require('./server/config/passport')(passport);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -36,6 +46,19 @@ app.use(sassMiddleware({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// passport setting
+app.use(session({
+  secret: 'sometextgohere',
+  saveUninitialized: true,
+  resave: true,
+  store: new MongoStore({
+    url: config.url,
+    collection: 'sessions'
+  })
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
 app.use('/', index);
 app.use('/users', users);
 
