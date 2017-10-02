@@ -1,4 +1,4 @@
-commovar gravatar = require('gravatar');
+var gravatar = require('gravatar');
 var Comments = require('../models/comments');
 
 exports.list = function(req,res){
