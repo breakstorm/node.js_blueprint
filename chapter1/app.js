@@ -5,6 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var sassMiddleware = require('node-sass-middleware');
+var session = require('express-session');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var flash = require('connect-flash');
 
 var index = require('./server/routes/index');
 var users = require('./server/routes/users');
@@ -28,6 +32,15 @@ app.use(sassMiddleware({
   sourceMap: false
 }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  secret: 'something',
+  saveUninitialized: true,
+  resave: true,
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
 
 app.use('/', index);
 app.use('/users', users);
