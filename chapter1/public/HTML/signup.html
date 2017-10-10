@@ -17,11 +17,11 @@
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item">
 					<a href="#" class="nav-link">Sign in
-						<span class="sr-only">(current)</span>
 					</a>
 				</li>
 				<li class="nav-item">
 					<a href="#" class="nav-link">Sign up
+						<span class="sr-only">(current)</span>
 					</a>
 				</li>
 				<li class="nav-item">
@@ -41,11 +41,13 @@
 	<div class="container">
 		<form action="/login" method="post" class="form-signin">
 			<br>
-			<h2>Welcome Signin Page</h2>
+			<h2>Please Signup</h2>
+			<label for="name" class="sr-only">Name</label>
+			<input type="text" id="name" name="name" class="form-control" placeholder="Name" required="">
 			<label for="inputEmail" class="sr-only">Email address</label>
 			<input type="email" id="email" name="email" class="form-control" placeholder="Email address" required="">
-			<label for="inputPassword" class="sr-only">Password</label>
 			<input type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
+			<br>
 			<button class="btn btn-md btn-primary btn-block" type="submit">Sign in</button>
 			<br>
 			<p>Don't have an account? <a href="/signup">Signup</a>,it's free.</p>
