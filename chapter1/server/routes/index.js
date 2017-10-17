@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var gravatar = require('gravatar');
-var passport = requrie('passport');
+var passport = require('passport');
 
 router.get('/', function(req, res, next) {
 	res.render('index', {title: 'Express from server folder'});
@@ -9,11 +9,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/login', function(req, res, next) {
-	res.render('login', {title: 'Login page', message: 'hello login'})
+	res.render('login', {title: 'Login page', message: req.flash('loginMessage')})
 })
 
 router.get('/signup', function(req, res, next) {
-	res.render('signup', {title: 'Signup page', message: 'hello signup'})
+	res.render('signup', {title: 'Signup page', message: req.flash('signupMessage')})
 })
 
 router.get('/profile', isLoggedIn, function(req, res, next) {
@@ -23,8 +23,10 @@ router.get('/profile', isLoggedIn, function(req, res, next) {
 			email: 'aaa@mail.com'
 		}
 	};
+	console.log("!!!", req.user.local.email);
+	console.log("!!!", gravatar.url(req.user.local.email, {s: '100', r: 'x', d: 'retro'}, true));
 	res.render('profile', {title: 'Profile page', avatar: 
-		gravatar.url('aaa@mail.com', {s: '100', r: 'x', d: 'retro'}, true), user: req.user})
+		gravatar.url(req.user.local.email, {s: '100', r: 'x', d: 'retro'}, true), user: req.user})
 	// res.render('profile', {title: 'Profile page', avatar: 
 	// 	gravatar.url('aaa@mail.com', {s: '100', r: 'x', d: 'retro'}, true), user: testUser})
 })
@@ -43,7 +45,7 @@ router.post('/signup', passport.authenticate('local-signup', {
 
 router.get('/logout', function(req, res, next){
 	req.logout();
-	req.redirect('/');
+	res.redirect('/');
 });
 
 function isLoggedIn(req, res, next) {
