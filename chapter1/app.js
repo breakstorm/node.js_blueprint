@@ -11,7 +11,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var flash = require('connect-flash');
 var mongoose = require('mongoose');
 var MongoStore = require('connect-mongo')(session);
-
+var comments = require('./server/controllers/comments');
 
 var index = require('./server/routes/index');
 var users = require('./server/routes/users');
@@ -61,6 +61,8 @@ app.use(flash());
 
 app.use('/', index);
 app.use('/users', users);
+app.get('/comments', comments.hasAuthorization, comments.list);
+app.post('/comments', comments.hasAuthorization, comments.create);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
