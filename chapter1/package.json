@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "node.js-blueprint",
   "description": "Build a Twitter Like app using the MVC design pattern",
   "license": "MIT",
@@ -15,6 +16,9 @@
     "Express Application",
     "Expressjs"
   ],
+=======
+  "name": "chapter1",
+>>>>>>> develop
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -24,14 +28,22 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.17.1",
     "connect-flash": "^0.1.1",
+<<<<<<< HEAD
     "connect-mongo": "^1.3.2",
+=======
+    "connect-mongo": "^2.0.0",
+>>>>>>> develop
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "ejs": "~2.5.6",
     "express": "~4.15.2",
     "express-session": "^1.15.6",
     "gravatar": "^1.6.0",
+<<<<<<< HEAD
     "mongoose": "^4.11.13",
+=======
+    "mongoose": "^4.12.3",
+>>>>>>> develop
     "morgan": "~1.8.1",
     "node-sass-middleware": "0.9.8",
     "passport": "^0.4.0",

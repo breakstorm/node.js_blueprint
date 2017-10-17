@@ -5,7 +5,11 @@
  */
 
 var app = require('../app');
+<<<<<<< HEAD
 var debug = require('debug')('node.js-blueprint:server');
+=======
+var debug = require('debug')('chapter1:server');
+>>>>>>> develop
 var http = require('http');
 
 /**
