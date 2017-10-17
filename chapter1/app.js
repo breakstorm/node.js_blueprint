@@ -22,6 +22,14 @@ var app = express();
 app.set('views', path.join(__dirname, 'server/views/pages'));
 app.set('view engine', 'ejs');
 
+// database sestup
+var config = require('./server/config/config.js');
+mongoose.connect(config.url);
+mongoose.connection.on('error', function(){
+  console.error('MongoDB Connection Error. Make sure MongoDB is running');
+});
+
+// passport setup
 var config = require('./server/config/config.js');
 mongoose.connect(config.url);
 mongoose.connection.on('open', function() {
@@ -39,14 +47,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(sassMiddleware({
-  src: path.join(__dirname, 'public/stylesheets'),
-  dest: path.join(__dirname, 'public/tylesheets'),
-  indentedSyntax: true, // true = .sass and false = .scss
-  sourceMap: false
+  src: path.join(__dirname, 'public'),
+  dest: path.join(__dirname, 'public'),
+  indentedSyntax: false, // true = .sass and false = .scss
+  outputStyle: 'compressed',
+  sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+// passport setting
 app.use(session({
-  secret: 'something',
+  secret: 'sometextgohere',
   saveUninitialized: true,
   resave: true,
   store: new MongoStore({
@@ -57,6 +68,9 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+app.use('/', index);
+app.use('/users', users);
+
 
 
 app.use('/', index);
@@ -71,6 +85,7 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
+
 
 // development error handler
 // will print stacktrace

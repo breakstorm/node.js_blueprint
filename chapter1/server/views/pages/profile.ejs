@@ -1,6 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+	<title><%= title %></title>
+	<% include ../partials/stylesheet %>
+</head>
+<body>
+	<% include ../partials/header %>	
+
+	<div class="container">
+		<h1><%= title %></h1>
+		<div class="details">
+			<div class="card text-xs-center">
+				<br>
+				<img class="card-img-top" src="<%= avatar%>" alt="Card image cap">
+				<div class="card-block">
+					<h4 class="card-title">User Details</h4>
+					<p class="card-text">
+						<strong>Name</strong> <%= user.local.name %>
+						<strong>Email</strong> <%= user.local.email %>
+					</p>
+					<a href="/logout" class="btn btn-default"></a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<% include ../partials/footer %>
+	<% include ../partials/javascript %>
+
+</body>
+</html>
+=======
+>>>>>>> 14fc4bc9fee34cf8e05024edcb4f3e830715e182
     <title><%= title %></title>
     <% include ../partials/stylesheet %>
 </head>
@@ -29,3 +63,7 @@
         <% include ../partials/javascript %>
     </body>
     </html>
+<<<<<<< HEAD
+=======
+>>>>>>> develop
+>>>>>>> 14fc4bc9fee34cf8e05024edcb4f3e830715e182

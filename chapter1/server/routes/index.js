@@ -1,5 +1,30 @@
 var express = require('express');
 var router = express.Router();
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+var passport = require('passport');
+var gravatar = require('gravatar');
+
+/* GET home page. */
+router.get('/', function(req, res, next) {
+	console.log("get index / ")
+  res.render('index', { title: 'Express from server folder' });
+});
+
+router.get('/login', function(req, res, next){
+	res.render('login', {title: 'Login Page', message: req.flash('loginMessage') });
+});
+
+router.get('/signup', function(req,res){
+	res.render('signup', {title: 'Signup Page', message: req.flash('signupMessage')});
+});
+
+router.get('/profile', isLoggedIn, function(req,res,next){
+	res.render('profile', {title: 'Profile Page', user: req.user, avatar: gravatar.url(req.user.email, {s: '100', r:'x', d: 'retro'}, true)});
+});
+=======
+>>>>>>> 14fc4bc9fee34cf8e05024edcb4f3e830715e182
 var gravatar = require('gravatar');
 var passport = require('passport');
 
@@ -30,6 +55,10 @@ router.get('/profile', isLoggedIn, function(req, res, next) {
 	// res.render('profile', {title: 'Profile page', avatar: 
 	// 	gravatar.url('aaa@mail.com', {s: '100', r: 'x', d: 'retro'}, true), user: testUser})
 })
+<<<<<<< HEAD
+=======
+>>>>>>> develop
+>>>>>>> 14fc4bc9fee34cf8e05024edcb4f3e830715e182
 
 router.post('/login', passport.authenticate('local-login', {
 	successRedirect: '/profile',
@@ -37,6 +66,28 @@ router.post('/login', passport.authenticate('local-login', {
 	failureFlash: true
 }));
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+router.post('/signup', passport.authenticate('local-signup',{
+	successRedirect: '/profile',
+	failureRedirect: '/signup',
+	failureFlash: true
+}))
+
+function isLoggedIn(req, res, next){
+	if(req.isAuthenticated())
+		return next();
+	res.redirect('/login');
+}
+
+
+router.get('/logout', function(req, res){
+	req.logout();
+	res.reirect('/');
+});
+=======
+>>>>>>> 14fc4bc9fee34cf8e05024edcb4f3e830715e182
 router.post('/signup', passport.authenticate('local-signup', {
 	successRedirect: '/profile',
 	failureRedirect: '/signup',
@@ -53,5 +104,9 @@ function isLoggedIn(req, res, next) {
 		return next();
 	res.redirect('/login');
 };
+<<<<<<< HEAD
+=======
+>>>>>>> develop
+>>>>>>> 14fc4bc9fee34cf8e05024edcb4f3e830715e182
 
 module.exports = router;
