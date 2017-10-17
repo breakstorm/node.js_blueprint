@@ -40,7 +40,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(sassMiddleware({
   src: path.join(__dirname, 'public/stylesheets'),
-  dest: path.join(__dirname, 'publics/tylesheets'),
+  dest: path.join(__dirname, 'public/tylesheets'),
   indentedSyntax: true, // true = .sass and false = .scss
   sourceMap: false
 }));
