@@ -1,0 +1,24 @@
+<!-- error page -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>error</title>
+
+	<% include ../partials/stylesheet %>
+</head>
+<body>
+
+	<% include ../partials/header %>
+
+	<div class="container">
+		<h1>Sorry: <%= message %></h1>
+	    <h2><% error.status %></h2>
+	    <p><% error.stack %></p>
+	</div>	
+
+	<% include ../partials/footer %>
+
+	<% include ../partials/javascript %>
+
+</body>
+</html>
