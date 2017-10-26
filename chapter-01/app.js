@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var sassMiddleware = require('node-sass-middleware');
-//
+//hwigyum
 var mongoose = require('mongoose');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
@@ -15,6 +15,8 @@ var flash = require('connect-flash');
 
 var index = require('./server/routes/index');
 var users = require('./server/routes/users');
+//hwigyum
+var comments = require('./server/controllers/comments')
 
 var app = express();
 
@@ -63,6 +65,8 @@ app.use(flash());
 
 app.use('/', index);
 app.use('/users', users);
+app.get('/comments', comments.hasAuthorization, comments.list);
+app.post('/comments', comments.hasAuthorization, comments.create);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
