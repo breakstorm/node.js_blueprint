@@ -4,9 +4,42 @@
 	{% include "../partials/head.html" %}
 </head>
 <body>
+	<div class="navbar-collapse inverse collapse" id="navbar-header" aria-expanded="false" style="height: 100px;">
+		<div class="container-fluid">
+			<div class="about">
+				<h4>About</h4>
+				<p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact onformation.</p>
+			</div>
+			<div class="social">
+				<h4 class="">Contact</h4>
+				<ul class="list-unstyled">
+					<li><a href="#">Follow on Twitter</a></li>
+					<li><a href="#">Like on Facebook</a></li>
+					<li><a href="#">Email me</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<nav class="navbar navbar-expand-lg bg-dark bg-inverse">
+		<div class="container-fluid">
+			<button class="navbar-toggler collapsed" type="button" data-toggle="collapsed" data-target="#navbar-header" aria-expanded="false">
+			</button>
+			<a href="/" class="navbar-brand">MVC MySql App</a>
+		</div>
+	</nav>
+
 	{% block content %}
 	{% endblock %}
 
-	{% include "../partials/footer.html" %}
+	<footer class="text-muted bg-inverse">
+		<div class="container">
+			<p class="pull-xs-right">
+				<a href="#">Back to top111</a>
+			</p>
+			<p>Sample Page using Album example from © Bootstrap!</p>
+			<p>New to Bootstrap?<a href="https://getbootstrap.com/">Visit the homepage</a>.</p>
+		</div>
+	</footer>
+	{% include "../partials/footscript.html" %}
 </body>
 </html>
