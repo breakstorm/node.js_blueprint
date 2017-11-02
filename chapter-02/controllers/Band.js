@@ -2,28 +2,37 @@ var models = require('../models/index');
 var Band = require('../models/band');
 
 exports.create = function(req, res) {
-	models.Band.create(req.body).then( band => { 
+	models.Band.create(req.body).then( function(band) { 
 		res.redirect('/bands');
 	})
 }
 
 exports.list = function(req, res) {
-	models.Band.findAll({
-		order: 'createdAt DESC'
-	}).then( bands => { 
-		res.render('band-list', { 
-			title: 'List band',
-			bands: bands
-		});
-	})
-}
+	// res.render('band-list', {
+ //        title: 'List bands',
+ //        bands: bands
+ //    });
 
-exports.bydId = function(req, res) {
+	// List all bands and sort by Date
+    models.Band.findAll({
+        // Order: lastest created
+        order: 'createdAt DESC'
+    }).then(function(bands) {
+        //res.json(bands);
+        // Render result
+        res.render('band-list', {
+            title: 'List bands',
+            bands: bands
+        });
+    });
+};
+
+exports.byId = function(req, res) {
 	models.Band.find({
 		where: {
 			id: req.params.id
 		}
-	}).then( band => {
+	}).then( function(band) {
 		res.json(band);
 	});
 }
@@ -33,7 +42,7 @@ exports.update = function (req, res) {
 		where: {
 			id: req.params.id
 		}
-	}).then(band => {
+	}).then(function(band) {
 		if(band){
 			band.updateAttributes({
 				name: req.body.name,
@@ -41,7 +50,7 @@ exports.update = function (req, res) {
 				album: req.body.album,
 				year: req.body.year,
 				UserId: req.body.user_id
-			}).then( band => {
+			}).then( function(band) {
 				res.send(band);
 			});
 		}
@@ -53,7 +62,7 @@ exports.delete = function(req, res) {
 		where:{
 			id: req.params.id
 		}
-	}).then( band => {
+	}).then( function(band) {
 		res.json(band);
 	})
 }

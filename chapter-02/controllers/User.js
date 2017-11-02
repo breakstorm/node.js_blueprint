@@ -6,9 +6,9 @@ exports.create = function(req, res) {
 	models.User.create({
 		name: req.body.name,
 		email: req.body.email
-	}).then(user => {res.json(user)})
+	}).then(function(user) {res.json(user)})
 }
 
 exports.list = function(req, res){
-	models.User.findAll({}).then( users => { res.join(users) })
+	models.User.findAll({}).then(function(users) { res.join(users) })
 }
