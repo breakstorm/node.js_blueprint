@@ -10,5 +10,9 @@ exports.create = function(req, res) {
 }
 
 exports.list = function(req, res){
-	models.User.findAll({}).then(function(users) { res.join(users) })
+
+	models.User.findAll({}).then(function(users) { 
+		console.log("user list query done")
+		res.json(users) 
+	})
 }

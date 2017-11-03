@@ -8,16 +8,12 @@ exports.create = function(req, res) {
 }
 
 exports.list = function(req, res) {
-	// res.render('band-list', {
- //        title: 'List bands',
- //        bands: bands
- //    });
-
 	// List all bands and sort by Date
     models.Band.findAll({
-        // Order: lastest created
-        order: 'createdAt DESC'
-    }).then(function(bands) {
+    	order: [['name', 'DESC']]
+    })
+    .then(function(bands) {
+    	console.log(typeof(bands))
         //res.json(bands);
         // Render result
         res.render('band-list', {
@@ -25,6 +21,19 @@ exports.list = function(req, res) {
             bands: bands
         });
     });
+	// // List all bands and sort by Date
+ //    models.Band.findAll({
+ //        // Order: lastest created
+ //        order: 'createdAt DESC'
+ //    }).then(function(bands) {
+ //    	console.log("query done")
+ //        //res.json(bands);
+ //        // Render result
+ //        res.render('band-list', {
+ //            title: 'List bands',
+ //            bands: bands
+ //        });
+ //    });
 };
 
 exports.byId = function(req, res) {
