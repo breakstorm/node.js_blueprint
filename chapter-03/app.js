@@ -10,7 +10,7 @@ var upload = multer({ dest: './public/uploads', limits:{fileSize:1000000, files:
 var index = require('./server/controllers/index');
 var auth = require('./server/controllers/auth');
 var comments = require('./server/controllers/comments');
-var videos = require('./server/controllers/videos');
+// var videos = require('./server/controllers/videos');
 var images = require('./server/controllers/images');
 
 var mongoose = require('mongoose');
@@ -25,7 +25,7 @@ var app = express();
 //database connection & template
 app.set('views', path.join(__dirname, 'server/views/pages'));
 app.set('view engine', 'ejs');
-var config = requrie('./server/config/config.js');
+var config = require('./server/config/config.js');
 mongoose.connect(config.url);
 mongoose.connection.on('opne', function() {
 	console.log('MongoDB Connection Success.');
