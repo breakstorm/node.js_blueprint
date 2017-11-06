@@ -16,13 +16,17 @@ exports.signup = function(req, res) {
 	})
 };
 
+exports.profile = function(req, res) {
+    res.render('profile', { title: 'Profile Page', user : req.user, avatar: gravatar.url(req.user.email ,  {s: '100', r: 'x', d: 'retro'}, true) });
+};
+
 exports.logout = function() {
 	req.logout();
 	res.redirect('/');
 };
 
 exports.isLoggedIn = function(req, res, next) {
-	if(req,isAuthenticated())
+	if(req.isAuthenticated())
 		return next();
 	res.redirect('/login');
 };

@@ -10,7 +10,7 @@ var upload = multer({ dest: './public/uploads', limits:{fileSize:1000000, files:
 var index = require('./server/controllers/index');
 var auth = require('./server/controllers/auth');
 var comments = require('./server/controllers/comments');
-// var videos = require('./server/controllers/videos');
+var videos = require('./server/controllers/videos');
 var images = require('./server/controllers/images');
 
 var mongoose = require('mongoose');
