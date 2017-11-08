@@ -2,7 +2,7 @@ var fs = require('fs');
 var mime = require('mime');
 var gravatar = require('gravatar');
 var Videos = require('../models/videos');
-var VIDEO_TYPES = ['video/mp4', 'video/webm', 'video/ogg', 'video/ogv'];
+var VIDEO_TYPES = ['video/mp4', 'video/webm', 'video/ogg', 'video/ogv', 'video/mov'];
 
 exports.show = function(req, res) {
 	Videos.find().sort('-created').populate('user', 'local.email')
@@ -49,7 +49,7 @@ exports.uploadVideo = function(req, res) {
 	});
 
 	src.on('end', function() {
-		var video = new VIdeos(req.body);
+		var video = new Videos(req.body);
 		video.videoName = req.file.originalname;
 		video.user = req.user;
 

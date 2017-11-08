@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var multer = require('multer');
-var upload = multer({ dest: './public/uploads', limits:{fileSize:1000000, files:1} });
+var upload = multer({ dest: './public/uploads', limits:{fileSize:1000000000, files:1} });
 
 var index = require('./server/controllers/index');
 var auth = require('./server/controllers/auth');
