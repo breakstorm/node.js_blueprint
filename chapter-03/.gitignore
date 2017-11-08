@@ -19,3 +19,5 @@ build/Release
 npm-debug.logs
 
 into-gitnode_midules
+
+node_modules
